@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_template/src/config/themes/app_colors.dart';
+import 'package:tmtrade_sms/src/config/themes/app_colors.dart';
 
 abstract class AppTheme {
   static final appTheme = ThemeData(

@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_template/src/config/dio/app_interceptor.dart';
+import 'package:tmtrade_sms/src/config/dio/app_interceptor.dart';
 import 'dio_client.dart';
 
 class AuthInterceptor extends Interceptor {

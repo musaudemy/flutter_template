@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_template/main.dart';
+import 'package:tmtrade_sms/main.dart';
+import 'package:tmtrade_sms/src/presentation/views/home_page.dart';
 
 const _home = '/';
 
@@ -13,9 +14,9 @@ class AppRoutes {
   static Route onGenerateRoutes(RouteSettings settings) {
     switch (settings.name) {
       case _home:
-        return _materialRoute(const MyApp());
+        return _materialRoute(const HomePage());
       default:
-        return _materialRoute(const MyApp());
+        return _materialRoute(const HomePage());
     }
   }
 
@@ -24,6 +25,6 @@ class AppRoutes {
   }
 
   static Route onUnkownRoute(RouteSettings settings) {
-    return MaterialPageRoute(builder: (_) => const MyApp());
+    return MaterialPageRoute(builder: (_) => const HomePage());
   }
 }

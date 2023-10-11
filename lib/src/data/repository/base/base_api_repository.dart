@@ -1,7 +1,7 @@
 import 'dart:io' show HttpStatus;
 
 import 'package:dio/dio.dart';
-import 'package:flutter_template/src/data/repository/base/data_state.dart';
+import 'package:tmtrade_sms/src/data/repository/base/data_state.dart';
 import 'package:meta/meta.dart';
 import 'package:retrofit/retrofit.dart';
 

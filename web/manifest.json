@@ -1,6 +1,6 @@
 {
-    "name": "flutter_template",
-    "short_name": "flutter_template",
+    "name": "tmtrade_sms",
+    "short_name": "tmtrade_sms",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

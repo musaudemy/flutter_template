@@ -1,5 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_template/src/config/injector.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tmtrade_sms/src/config/blocs/providers.dart';
+import 'package:tmtrade_sms/src/config/constants/app_constants.dart';
+import 'package:tmtrade_sms/src/config/injector.dart';
+import 'package:tmtrade_sms/src/config/localization/app_localizations_setup.dart';
+import 'package:tmtrade_sms/src/config/router/app_router.dart';
+import 'package:tmtrade_sms/src/config/themes/app_theme.dart';
+import 'package:tmtrade_sms/src/presentation/views/home_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,63 +39,32 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
-    );
+    return MultiBlocProvider(
+        providers: BlocProviders.providers,
+        child: MaterialApp(
+          navigatorKey: navigatorKey,
+          scrollBehavior: const ScrollBehavior().copyWith(overscroll: false),
+          debugShowCheckedModeBanner: false,
+          title: kMaterialAppTitle,
+          onGenerateRoute: AppRoutes.onGenerateRoutes,
+          // initialRoute: AppRoute.home,
+          onUnknownRoute: AppRoutes.onUnkownRoute,
+          supportedLocales: AppLocalizationsSetup.supportedLocales,
+          localizationsDelegates: AppLocalizationsSetup.localizationsDelegates,
+          localeResolutionCallback:
+              AppLocalizationsSetup.localeResolutionCallBack,
+          locale: Locale('ru'),
+          theme: AppTheme.appTheme,
+          builder: (BuildContext context, Widget? child) {
+            final textScaleFactor =
+                MediaQuery.of(context).textScaleFactor.clamp(1.0, 1.1);
+            return MediaQuery(
+                data: MediaQuery.of(context)
+                    .copyWith(textScaleFactor: textScaleFactor),
+                child: child ?? const HomePage());
+          },
+        ));
   }
 }

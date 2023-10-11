@@ -1,8 +1,8 @@
-import 'package:flutter_template/src/data/datasources/remote/api_service.dart';
-import 'package:flutter_template/src/data/repository/base/data_state.dart';
-import 'package:flutter_template/src/domain/models/requests/auth_request.dart';
-import 'package:flutter_template/src/domain/models/responses/auth_response.dart';
-import 'package:flutter_template/src/domain/repository/auth_repository.dart';
+import 'package:tmtrade_sms/src/data/datasources/remote/api_service.dart';
+import 'package:tmtrade_sms/src/data/repository/base/data_state.dart';
+import 'package:tmtrade_sms/src/domain/models/requests/auth_request.dart';
+import 'package:tmtrade_sms/src/domain/models/responses/auth_response.dart';
+import 'package:tmtrade_sms/src/domain/repository/auth_repository.dart';
 
 import 'base/base_api_repository.dart';
 
